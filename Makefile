@@ -12,7 +12,7 @@ help:
 
 .PHONY: deploy-front
 deploy-front:
-	cd $(front_path)
+	cd $(front_path) && pnpm build
 	rsync -av --delete \
 		$(front_path)/out/ \
 		bernex-basic:$(front_remote_path)

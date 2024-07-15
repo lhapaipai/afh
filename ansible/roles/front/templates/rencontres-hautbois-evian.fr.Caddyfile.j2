@@ -1,4 +1,5 @@
 {{ front_hostname }}, www.{{ front_hostname }} {
   root * /srv/{{ front_hostname }}
+  encode gzip
   file_server
 }
