@@ -2,6 +2,8 @@
 hostname: bernex
 server_hostname: bernex.rencontres-hautbois-evian.fr
 
+front_hostname: rencontres-hautbois-evian.fr
+
 # l'utilisateur par défaut pour toutes les opérations ansible
 ansible_user: root
 

@@ -33,7 +33,6 @@
     line: '{{ admin_user }} ALL=(ALL) NOPASSWD:ALL'
     validate: 'visudo -cf %s'
 
-
 - name: Basic user | Crée l'utilisateur {{ basic_user }}
   # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/user_module.html
   ansible.builtin.user:

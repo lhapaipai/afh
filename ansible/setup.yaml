@@ -23,3 +23,8 @@
   hosts: all
   tags: nodejs
   roles: [nodejs]
+
+- name: Front
+  hosts: all
+  tags: front
+  roles: [front]

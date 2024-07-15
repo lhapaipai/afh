@@ -4,6 +4,8 @@ chez OVH, générer le mot de passe pour l'utilisateur `ubuntu`. puis se connect
 
 Ansible se connectera donc en tant que root sans mot de passe avec notre clé privée.
 
+ajouter les enregistrements DNS A pour notre hôte.
+
 ## Première installation
 
 Lancer le playbook
@@ -22,6 +24,11 @@ Host <alias>
   HostName <server-ip-hostname>
   Port 22
   User <admin-user>
+
+Host <alias>-basic
+  HostName <server-ip-hostname>
+  Port 22
+  User <basic-user>
 ```
 
 ## Mises à jour

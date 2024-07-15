@@ -1,0 +1,14 @@
+---
+- name: "create front root directory"
+  # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html
+  ansible.builtin.file:
+    state: directory
+    path: "/srv/{{ front_hostname }}"
+    owner: "{{ basic_user }}"
+    group: "{{ basic_user }}"
+
+- name: "create front caddyfile"
+  ansible.builtin.template:
+    src: "{{ front_hostname }}.Caddyfile.j2"
+    dest: "/etc/caddy/sites-enabled/{{ front_hostname }}.Caddyfile"
+  notify: caddy reload

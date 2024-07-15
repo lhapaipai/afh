@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "name": "ROOT",
+      "path": "../",
+    },
+    {
+      "name": "ansible",
+      "path": "../ansible"
+    },
+    {
+      "name": "front",
+      "path": "../front"
+    }
+  ]
+}
