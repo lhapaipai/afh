@@ -1,0 +1,7 @@
+# générer un mot de passe
+# générer ensuite son hash avec `mkpasswd -m yescrypt`
+# 
+# conserver le mot de passe
+# inscrire le hash ICI
+vault_admin_password:
+vault_basic_password:

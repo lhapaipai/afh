@@ -1,0 +1,27 @@
+---
+- name: add caddy apt key
+  ansible.builtin.apt_key:
+    url: https://dl.cloudsmith.io/public/caddy/stable/gpg.key
+    keyring: /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+
+- name: add caddy repository
+  ansible.builtin.apt_repository:
+    repo: deb [signed-by=/usr/share/keyrings/caddy-stable-archive-keyring.gpg] https://dl.cloudsmith.io/public/caddy/stable/deb/debian any-version main
+    state: present
+    
+- name: install caddy server
+  ansible.builtin.apt:
+    update_cache: true
+    name: caddy
+
+- name: create sites-enabled directory
+  # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html
+  ansible.builtin.file:
+    state: directory
+    path: /etc/caddy/sites-enabled
+
+- name: Copy base Caddyfile
+  ansible.builtin.template:
+    src: Caddyfile.j2
+    dest: /etc/caddy/Caddyfile
+  notify: caddy restart

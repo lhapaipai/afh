@@ -1,0 +1,52 @@
+---
+- name: "root | .bashrc"
+  ansible.builtin.copy:
+    src: root.bashrc
+    dest: "/root/.bashrc"
+
+- name: "root | .inputrc"
+  ansible.builtin.copy:
+    src: .inputrc
+    dest: "/root/.inputrc"
+
+- name: "{{ admin_user }} | .bashrc"
+  ansible.builtin.copy:
+    src: user.bashrc
+    dest: "/home/{{ admin_user }}/.bashrc"
+    owner: "{{ admin_user }}"
+    group: "{{ admin_user }}"
+
+- name: "{{ admin_user }} | .inputrc"
+  ansible.builtin.copy:
+    src: .inputrc
+    dest: "/home/{{ admin_user }}/.inputrc"
+    owner: "{{ admin_user }}"
+    group: "{{ admin_user }}"
+
+- name: "{{ admin_user }} | .gitconfig"
+  ansible.builtin.copy:
+    src: .gitconfig
+    dest: "/home/{{ admin_user }}/.gitconfig"
+    owner: "{{ admin_user }}"
+    group: "{{ admin_user }}"
+
+- name: "{{ basic_user }} | .bashrc"
+  ansible.builtin.copy:
+    src: user.bashrc
+    dest: "/home/{{ basic_user }}/.bashrc"
+    owner: "{{ basic_user }}"
+    group: "{{ basic_user }}"
+
+- name: "{{ basic_user }} | .inputrc"
+  ansible.builtin.copy:
+    src: .inputrc
+    dest: "/home/{{ basic_user }}/.inputrc"
+    owner: "{{ basic_user }}"
+    group: "{{ basic_user }}"
+
+- name: "{{ basic_user }} | .gitconfig"
+  ansible.builtin.copy:
+    src: .gitconfig
+    dest: "/home/{{ basic_user }}/.gitconfig"
+    owner: "{{ basic_user }}"
+    group: "{{ basic_user }}"

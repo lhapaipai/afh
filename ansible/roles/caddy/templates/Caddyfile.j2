@@ -1,0 +1,10 @@
+# Refer to the Caddy docs for more information:
+# https://caddyserver.com/docs/caddyfile
+
+{{ server_hostname }}:80 {
+	respond <<TEXT
+		Welcome bernex.rencontres-hautbois-evian.fr
+		TEXT 200
+}
+
+import sites-enabled/*

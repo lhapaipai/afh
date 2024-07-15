@@ -1,0 +1,10 @@
+---
+- name: caddy restart
+  ansible.builtin.systemd:
+    name: "caddy"
+    state: restarted
+
+- name: caddy reload
+  ansible.builtin.systemd:
+    name: "caddy"
+    state: reloaded

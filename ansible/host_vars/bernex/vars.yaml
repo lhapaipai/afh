@@ -1,0 +1,22 @@
+---
+hostname: bernex
+server_hostname: bernex.rencontres-hautbois-evian.fr
+
+# l'utilisateur par défaut pour toutes les opérations ansible
+ansible_user: root
+
+admin_user: lhapaipai
+admin_password: "{{ vault_admin_password }}"
+
+basic_user: basic
+basic_password: "{{ vault_basic_password }}"
+
+distrib_codename: jammy
+
+# between 16 | 18 | 20 | 21
+node_version: 20
+
+npm_globals:
+  - pm2
+  - pnpm
+
