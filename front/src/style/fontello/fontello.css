@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "fontello";
+  src: url("data:font/woff2;charset=utf-8;base64,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");
+  font-weight: normal;
+  font-style: normal;
+}
+/* If you don't want inline font use this instead */
+/*
+@font-face {
+  font-family: 'fontello';
+  src: url('./fontello.woff2?1721059411498');;
+  font-weight: normal;
+  font-style: normal;
+}
+*/
+[class^="fe-"]:before,
+[class*=" fe-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: 0.2em;
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+
+.fe-heart:before { content: '\e800'; } /* '' */

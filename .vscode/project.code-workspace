@@ -2,7 +2,7 @@
   "folders": [
     {
       "name": "ROOT",
-      "path": "../",
+      "path": "../"
     },
     {
       "name": "ansible",
@@ -12,5 +12,10 @@
       "name": "front",
       "path": "../front"
     }
-  ]
+  ],
+  "settings": {
+    "files.associations": {
+      "*.css": "tailwindcss"
+    }
+  }
 }
