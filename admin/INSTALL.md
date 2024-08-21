@@ -1,3 +1,9 @@
+## Conventions
+
+pour la base de données les champs automatiques `user_updated` etc sont en snake case donc on va également suivre leurs conventions.
+
+## Installation
+
 ```bash
 sudo env PATH=$PATH:/usr/bin pm2 startup systemd -u basic --hp /home/basic
 

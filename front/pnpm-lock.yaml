@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@directus/sdk':
+        specifier: ^17.0.0
+        version: 17.0.0
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
@@ -66,6 +69,10 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@directus/sdk@17.0.0':
+    resolution: {integrity: sha512-ADKoFrLjWPVVsYNK0EffVFstl/ZHVaQbiUp4NCueKfvFaOSLQ16xSVNj5O//rP5+rU8t1HkjwC6JDh02rao7ZQ==}
+    engines: {node: '>=18.0.0'}
 
   '@eslint-community/eslint-utils@4.4.0':
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
@@ -1897,6 +1904,8 @@ packages:
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
+
+  '@directus/sdk@17.0.0': {}
 
   '@eslint-community/eslint-utils@4.4.0(eslint@8.57.0)':
     dependencies:
