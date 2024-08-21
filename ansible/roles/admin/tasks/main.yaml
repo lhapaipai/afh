@@ -1,0 +1,28 @@
+---
+- name: "create admin root directory"
+  # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/file_module.html
+  ansible.builtin.file:
+    state: directory
+    path: "/srv/{{ admin_hostname }}"
+    owner: "{{ basic_user }}"
+    group: "{{ basic_user }}"
+
+- name: "create admin caddyfile"
+  ansible.builtin.template:
+    src: "{{ admin_hostname }}.Caddyfile.j2"
+    dest: "/etc/caddy/sites-enabled/{{ admin_hostname }}.Caddyfile"
+  notify: caddy reload
+
+- name: APT | Update
+  # https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+  ansible.builtin.apt:
+    update_cache: yes
+    upgrade: dist
+
+- name: tools
+  ansible.builtin.apt:
+    name:
+      - build-essential
+      - libsqlite3-dev
+      - sqlite3
+    state: present

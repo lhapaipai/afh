@@ -1,6 +1,7 @@
 {
   "files.exclude": {
     "ansible": true,
-    "front": true
+    "front": true,
+    "admin": true
   }
 }

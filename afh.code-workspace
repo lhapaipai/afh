@@ -2,15 +2,19 @@
   "folders": [
     {
       "name": "ROOT",
-      "path": "../"
+      "path": "./"
     },
     {
       "name": "ansible",
-      "path": "../ansible"
+      "path": "./ansible"
     },
     {
       "name": "front",
-      "path": "../front"
+      "path": "./front"
+    },
+    {
+      "name": "admin",
+      "path": "./admin"
     }
   ],
   "settings": {

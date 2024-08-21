@@ -28,3 +28,8 @@
   hosts: all
   tags: front
   roles: [front]
+
+- name: Admin
+  hosts: all
+  tags: admin
+  roles: [admin]
