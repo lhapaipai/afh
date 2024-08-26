@@ -32,12 +32,16 @@ export default async function Support() {
   }
 
   return (
-    <div className="min-h-screen bg-drh-400 px-4 py-24">
-      <h2>{infos.title}</h2>
-      <div className="prose prose-neutral max-w-none">
-        {infos.content && (
-          <div dangerouslySetInnerHTML={{ __html: infos.content }}></div>
-        )}
+    <div className="bg-drh-500 px-4 py-24">
+      <div className="mx-auto max-w-5xl">
+        <h2 className="big-title mb-8 from-drh-800 to-drh-600">
+          {infos.title}
+        </h2>
+        <div className="prose prose-neutral prose-invert max-w-none">
+          {infos.content && (
+            <div dangerouslySetInnerHTML={{ __html: infos.content }}></div>
+          )}
+        </div>
       </div>
     </div>
   );

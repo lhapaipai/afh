@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .big-title {
-  @apply inline-block bg-gradient-to-r from-drh-500 to-drh-300 font-segoe-bl text-6xl opacity-40;
+  @apply inline-block bg-gradient-to-r font-segoe-bl text-6xl;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
