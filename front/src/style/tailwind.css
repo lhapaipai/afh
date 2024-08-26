@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.big-title {
+  @apply inline-block bg-gradient-to-r from-drh-500 to-drh-300 font-segoe-bl text-6xl opacity-40;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.grid-cols-auto {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}

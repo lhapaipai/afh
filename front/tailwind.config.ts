@@ -12,7 +12,30 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      typography: {},
+      fontFamily: {
+        segoe: "var(--font-segoe)",
+        "segoe-bl": "var(--font-segoe-black)",
+      },
+      colors: {
+        drh: {
+          100: "#f8e3ba",
+          200: "#f5d25e",
+          300: "#f3ad42",
+          400: "#e98219",
+          500: "#e2590e",
+          600: "#95130a",
+          700: "#771204",
+          800: "#5b0e00",
+          900: "#908a29",
+        },
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            maxWidth: "none",
+          },
+        },
+      },
     },
   },
   plugins: [

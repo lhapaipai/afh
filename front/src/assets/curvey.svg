@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="939.021"
+   height="159.84175"
+   viewBox="0 0 939.021 159.84175"
+   version="1.1"
+   xml:space="preserve"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <g
+   id="g2"
+   transform="translate(0,-1.5494218)">
+    <path
+   d="M 939,33.014 C 792.052,-19.345 386.487,159.402 186.064,159.402 90.914,159.402 0.217,137.033 0.217,137.033 L 0,0 h 939 z"
+   style="fill:url(#gradientFill)"
+   id="path2" /><path
+   d="M 14.129,140.755 0.105,137.072 0,107.542 21.496,112.707 C 191.726,157.42 328.70178,137.52843 479.48578,94.08343 635.17578,49.22443 804.376,-18.996 939.021,7.472 L 939,9.429 V 38.78 L 924.043,35.849 C 802.463,10.237 664.073,59.257 513.42,102.664 357.863,147.485 189.747,186.883 14.129,140.755 Z"
+   style="fill:url(#topStroke)"
+   id="path1" />
+    
+  </g>
+  <defs
+   id="defs5">
+    <linearGradient
+   id="topStroke"
+   x1="0"
+   y1="0"
+   x2="1"
+   y2="0"
+   gradientUnits="userSpaceOnUse"
+   gradientTransform="matrix(994.138,0,0,545.232,-12.3299,-13.0835)">
+      <stop
+   offset="0"
+   style="stop-color:rgb(0,83,166);stop-opacity:1"
+   id="stop2" />
+      <stop
+   offset="1"
+   style="stop-color:rgb(10,112,29);stop-opacity:1"
+   id="stop3" />
+    </linearGradient>
+    <linearGradient
+   id="gradientFill"
+   x1="119.93374"
+   y1="15.475321"
+   x2="266.94929"
+   y2="371.4077"
+   gradientTransform="scale(2.4270902,0.41201601)"
+   gradientUnits="userSpaceOnUse">
+      <stop
+   offset="7%"
+   stop-color="#f7fafc"
+   id="stop4" />
+      <stop
+   offset="66%"
+   stop-color="#c4d5e0"
+   id="stop5" />
+    </linearGradient>
+  </defs>
+</svg>
