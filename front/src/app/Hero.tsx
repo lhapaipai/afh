@@ -1,14 +1,26 @@
 import Mountain from "~/components/Mountain";
 import Image from "next/image";
 import logoImg from "~/assets/logo-800x428.png";
+import Roseau1 from "~/components/Roseau1";
+import Roseau2 from "~/components/Roseau2";
+import Hautbois from "~/components/Hautbois";
+import Roseau3 from "~/components/Roseau3";
+import Bosquet from "~/components/Bosquet";
+import LigneRoseaux from "~/components/LigneRoseaux";
 
 export default function Hero() {
   return (
-    <div className="relative min-h-screen bg-gradient-to-r from-drh-500 to-drh-300 text-gray-0">
+    <div className="relative min-h-screen overflow-hidden bg-gradient-to-r from-drh-500 to-drh-300 text-gray-0">
       <div className="absolute bottom-0 left-0 right-0">
+        <LigneRoseaux className="absolute bottom-0 left-0 hidden lg:block" />
+        <Roseau1 className="absolute bottom-0 right-0 hidden md:block" />
+        <Bosquet className="absolute bottom-0 left-0" />
+        <Roseau2 className="absolute bottom-0 left-0" />
+        <Hautbois className="absolute -bottom-12 -right-2 block w-2/4 max-w-72" />
+        <Roseau3 className="absolute bottom-0 left-1/4 hidden w-[15%] xl:block" />
         <Mountain />
       </div>
-      <div className="relative grid min-h-screen grid-cols-1 md:grid-cols-2 md:grid-rows-2">
+      <div className="pointer-events-none relative grid min-h-screen grid-cols-1 md:grid-cols-2 md:grid-rows-2">
         <div className="flex flex-col items-center justify-center">
           <h1 className="max-w-96">
             <Image
@@ -31,8 +43,8 @@ export default function Hero() {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center">
-          <ul className="list-disc font-bold">
+        <div className="">
+          <ul className="absolute bottom-16 left-16 list-disc font-bold">
             <li>Concerts</li>
             <li>Ateliers</li>
             <li>Concours</li>

@@ -4,32 +4,31 @@ import WhiteWave from "~/components/WhiteWave";
 import Infos from "./Infos";
 import Support from "./Support";
 import Hero from "./Hero";
+import LigneRoseaux from "~/components/LigneRoseaux";
+import Sponsors from "./Sponsors";
+import { hexColors } from "~/style/colors";
 
 export default function HomePage() {
   return (
-    <div className="">
-      <Hero />
-
-      <WhiteWave />
-      <Events />
+    <div className="relative">
+      <div className="relative">
+        <Hero />
+        <WhiteWave className="bottom-0" />
+      </div>
+      <div className="relative z-10">
+        <Events />
+        <WhiteWave className="top-full rotate-180" />
+      </div>
       <Infos />
-      <Support />
-      <div className="bg-drh-500 px-4 py-24">
-        <a
-          className="block rounded-lg bg-gray-0 p-4 text-center shadow-xl transition-all hover:bg-gray-1 hover:shadow-2xl focus:ring-yellow-2 active:bg-gray-2"
-          href="mailto:audrey.martin-favrot@ville-evian.fr"
-        >
-          <span className="mb-2 grid place-content-center text-2xl">
-            <i className="fe-mail"></i>
-          </span>
-
-          <span>Infos supplémentaires</span>
-        </a>
-
-        <div>
-          <i className="fe-heart text-red-5"></i> Revenez bientôt pour plus de
-          détails...
+      <div className="relative z-10 bg-drh-500">
+        <div className="bg-[url(/brindille-bg.svg)]">
+          <WhiteWave className="bottom-full" color={hexColors[4]} />
+          <Support />
+          <Sponsors />
         </div>
+      </div>
+      <div className="overflow-hidden bg-drh-500">
+        <LigneRoseaux className="-mb-8 -ml-8 -mr-8 w-[calc(100%+4rem)] min-w-[1024px] max-w-none" />
       </div>
     </div>
   );

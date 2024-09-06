@@ -1,9 +1,17 @@
+import clsx from "clsx";
+
 interface Props {
   color?: string;
+  direction?: "top" | "bottom";
+  className?: string;
 }
-export default function WhiteWave({ color = "#ffffff" }: Props) {
+export default function WhiteWave({
+  color = "#ffffff",
+  direction = "top",
+  className,
+}: Props) {
   return (
-    <div className="custom-shape-divider-bottom-1724598626 absolute bottom-0 left-0 w-full overflow-hidden">
+    <div className={clsx("absolute left-0 w-full overflow-hidden", className)}>
       <svg
         className="relative block h-[60px] w-full"
         xmlns="http://www.w3.org/2000/svg"

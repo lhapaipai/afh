@@ -1,7 +1,5 @@
 import type { Config } from "tailwindcss";
 import { pentatrionTw } from "pentatrion-design/tailwind";
-import typography from "@tailwindcss/typography";
-import colors from "tailwindcss/colors";
 
 const hexToRgb = (hex: string) => {
   hex = hex.replace("#", "");
@@ -18,7 +16,7 @@ const config: Config = {
     "./src/app/**/*.{ts,tsx}",
 
     // "./node_modules/pentatrion-design/lib/**/*.{ts,tsx}",
-    // "./node_modules/pentatrion-design/components/**/*.{ts,tsx}",
+    "./node_modules/pentatrion-design/components/**/*.js",
   ],
   theme: {
     extend: {
@@ -39,42 +37,12 @@ const config: Config = {
           900: "#908a29",
         },
       },
-      typography: {
-        DEFAULT: {
-          css: {
-            maxWidth: "none",
-          },
-        },
-        neutral: {
-          css: {
-            "--tw-prose-invert-body": colors.white,
-            "--tw-prose-invert-headings": colors.white,
-            "--tw-prose-invert-lead": colors.neutral[100],
-            "--tw-prose-invert-links": colors.white,
-            "--tw-prose-invert-bold": colors.white,
-            "--tw-prose-invert-counters": colors.neutral[100],
-            "--tw-prose-invert-bullets": colors.neutral[200],
-            "--tw-prose-invert-hr": colors.neutral[300],
-            "--tw-prose-invert-quotes": colors.white,
-            "--tw-prose-invert-quote-borders": colors.neutral[300],
-            "--tw-prose-invert-captions": colors.neutral[100],
-            "--tw-prose-invert-kbd": colors.white,
-            "--tw-prose-invert-kbd-shadows": hexToRgb(colors.white),
-            "--tw-prose-invert-code": colors.white,
-            "--tw-prose-invert-pre-code": colors.white,
-            "--tw-prose-invert-pre-bg": "rgb(0 0 0 / 50%)",
-            "--tw-prose-invert-th-borders": colors.neutral[200],
-            "--tw-prose-invert-td-borders": colors.neutral[300],
-          },
-        },
-      },
     },
   },
   plugins: [
     pentatrionTw({
       vars: false,
     }),
-    typography,
   ],
 };
 export default config;

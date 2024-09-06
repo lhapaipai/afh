@@ -1,3 +1,14 @@
 @import "./vars.css";
 @import "./tailwind.css";
 @import "./fontello/fontello.css";
+@import "./prose.css";
+
+@keyframes slide-logos {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-33.33%);
+  }
+}

@@ -1,3 +1,5 @@
+import { PositionAnchor } from "maplibre-gl";
+
 export type Event = {
   id: number;
   status: "published";
@@ -16,4 +18,22 @@ export type Page = {
   title: string;
   slug: string;
   content?: string;
+};
+
+export type Location = {
+  id: number;
+  name: string;
+  address: string;
+  address_extra: string;
+  description: string;
+  website: string;
+  coords: [number, number];
+  popup_anchor: PositionAnchor;
+};
+
+export type Sponsor = {
+  id: number;
+  logo: string;
+  width: number;
+  height: number;
 };

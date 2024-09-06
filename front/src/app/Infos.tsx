@@ -1,4 +1,4 @@
-import { readItem, readItems } from "@directus/sdk";
+import { readItems } from "@directus/sdk";
 import {
   RGradientMarker,
   RLayer,
@@ -8,13 +8,19 @@ import {
 } from "maplibre-react-components";
 import "maplibre-react-components/style.css";
 import "maplibre-theme/modern.css";
-import "maplibre-theme/icons.lucide.css";
+import "maplibre-theme/icons.default.css";
 
 import directus from "~/directus";
-import markdown2html from "~/lib/markdown";
-import { Page } from "~/types";
+import { Page, Location } from "~/types";
 import { bati } from "~/geodata";
 import { FillExtrusionLayerSpecification } from "maplibre-gl";
+import markdown2html from "~/lib/markdown";
+import clsx from "clsx";
+import Roseau2 from "~/components/Roseau2";
+import Bosquet from "~/components/Bosquet";
+import Roseau3 from "~/components/Roseau3";
+import { hexColors } from "~/style/colors";
+import SpotCard from "~/components/SpotCard";
 
 const evianCenter: [number, number] = [6.5884, 46.4005];
 const festivitesCenter: [number, number] = [6.587, 46.4];
@@ -55,27 +61,42 @@ async function getPage(): Promise<Page | null> {
   return null;
 }
 
+async function getLocations(): Promise<Location[]> {
+  const locations = await directus.request<Location[]>(readItems("location"));
+
+  return locations.map((location) => {
+    return {
+      ...location,
+      coords: JSON.parse(location.coords as any as string),
+    };
+  });
+}
+
 export default async function Infos() {
   const infos = await getPage();
-
+  const locations = await getLocations();
   if (!infos) {
     return <div>Pas de contenu</div>;
   }
 
   return (
-    <div className="bg-drh-400 px-4 py-24">
-      <div className="mx-auto max-w-5xl">
+    <div className="relative overflow-hidden bg-drh-400 px-4 py-24">
+      <Roseau2 className={clsx("absolute -bottom-8 right-0")} />
+
+      <Bosquet className="absolute -bottom-8 right-12" />
+      <Roseau3 className="absolute -bottom-8 left-0" color={hexColors[2]} />
+      <div className="relative z-10 mx-auto max-w-5xl">
         <h2 className="big-title mb-8 from-drh-700 to-drh-500">
           {infos.title}
         </h2>
-
         <RMap
+          id="evian-map"
           initialCenter={evianCenter}
           initialZoom={16}
           style={{ minHeight: 400 }}
           mapStyle="https://unpkg.com/ign-tms-styles/PLAN.IGN/modern.json"
           cooperativeGestures={true}
-          className="rounded-2xl shadow-lg"
+          className="mb-8 rounded-2xl shadow-lg"
         >
           <RSource type="geojson" data={bati} id="bati" />
           <RLayer
@@ -84,22 +105,18 @@ export default async function Infos() {
             source="bati"
             {...batiStyle}
           />
-          <RPopup
-            longitude={lumiereCenter[0]}
-            latitude={lumiereCenter[1]}
-            initialAnchor="top"
-          >
-            <div className="font-bold">Palais Lumière</div>
-            <div className="text-sm">Quai Charles Albert Besson</div>
-          </RPopup>
-          <RPopup
-            longitude={festivitesCenter[0]}
-            latitude={festivitesCenter[1]}
-            initialAnchor="bottom-left"
-          >
-            <div className="font-bold">Palais des Festivités</div>
-            <div className="text-sm">Pl. Peintre Charles Cottet</div>
-          </RPopup>
+          {locations.map((location) => (
+            <RPopup
+              key={location.id}
+              longitude={location.coords[0]}
+              latitude={location.coords[1]}
+              initialAnchor={location.popup_anchor}
+            >
+              <div className="font-bold">{location.name}</div>
+              <div className="text-sm">{location.address}</div>
+            </RPopup>
+          ))}
+
           <RGradientMarker
             longitude={parkingCharlesGaulle[0]}
             latitude={parkingCharlesGaulle[1]}
@@ -111,7 +128,23 @@ export default async function Infos() {
             text="P"
           ></RGradientMarker>
         </RMap>
-        <div className="prose prose-neutral prose-invert max-w-none">
+
+        <div className="mb-8 grid grid-cols-2 gap-8">
+          {locations.map((location) => {
+            return (
+              <SpotCard key={location.id} href={location.website}>
+                <div className="text-center font-bold">{location.name}</div>
+                <div className="text-center">{location.address}</div>
+
+                <div
+                  dangerouslySetInnerHTML={{ __html: location.description }}
+                ></div>
+              </SpotCard>
+            );
+          })}
+        </div>
+
+        <div className="prose">
           {infos.content && (
             <div dangerouslySetInnerHTML={{ __html: infos.content }}></div>
           )}

@@ -11,3 +11,8 @@
 .grid-cols-auto {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
+
+svg {
+  max-width: 100%;
+  height: auto;
+}

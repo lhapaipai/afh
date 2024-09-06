@@ -28,7 +28,7 @@ deploy-front:
 
 .PHONY: deploy-admin
 deploy-admin:
-	rsync -av \
+	rsync -av --delete \
 	  --exclude-from="$(admin_path)/.rsyncignore" \
 		$(admin_path)/ \
 		bernex-basic:$(admin_remote_path)
