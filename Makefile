@@ -33,7 +33,6 @@ deploy-front:
 
 .PHONY: deploy-front-sandbox
 deploy-front-sandbox:
-	cd $(front_path) && pnpm build
 	rsync -av --delete \
 		--exclude-from="$(front_path)/.rsyncignore" \
 		$(front_path)/ \
@@ -42,7 +41,8 @@ deploy-front-sandbox:
 	ssh bernex-basic "\
 		cd $(front_sandbox_remote_path) &&\
 		pnpm install &&\
-		pnpm run build"
+		pnpm run build &&\
+		pm2 reload front-sandbox"
 
 	@echo "go : https://$(front_sandbox_host)"
 

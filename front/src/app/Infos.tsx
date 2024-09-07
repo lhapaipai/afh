@@ -95,7 +95,6 @@ export default async function Infos() {
           initialZoom={16}
           style={{ minHeight: 400 }}
           mapStyle="https://unpkg.com/ign-tms-styles/PLAN.IGN/modern.json"
-          cooperativeGestures={true}
           className="mb-8 rounded-2xl shadow-lg"
         >
           <RSource type="geojson" data={bati} id="bati" />

@@ -15,6 +15,12 @@ export default function HomePage() {
         <WhiteWave className="bottom-0" />
       </div>
       <div className="relative z-10">
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 animate-[rotate_20s_ease-in-out_infinite] bg-[url(/hautbois-bg-1.svg)]"></div>
+          <div className="absolute inset-0 animate-[rotate-invert_20s_ease-in-out_infinite] bg-[url(/hautbois-bg-2.svg)]"></div>
+          <div className="absolute inset-0 animate-[rotate-invert_35s_ease-in-out_infinite] bg-[url(/hautbois-bg-3.svg)]"></div>
+          <div className="absolute inset-0 bg-[url(/hautbois-bg-4.svg)]"></div>
+        </div>
         <Events />
         <WhiteWave className="top-full rotate-180" />
       </div>

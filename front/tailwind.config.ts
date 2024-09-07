@@ -37,6 +37,10 @@ const config: Config = {
           900: "#908a29",
         },
       },
+      animation: {
+        swing: "swing 0.5s linear",
+        "short-pulse": "short-pulse 0.5s ease-in-out",
+      },
     },
   },
   plugins: [

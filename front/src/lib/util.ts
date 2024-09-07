@@ -4,7 +4,7 @@ export function getLocationLabel(location: string | null) {
       return "Auditorium";
     }
     case "lumiere-exposition": {
-      return "Couloirs";
+      return "pause nord, sud, étages 1 et 2";
     }
     case "lumiere-templiers": {
       return "Salle des Templiers";

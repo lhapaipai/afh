@@ -13,7 +13,6 @@ import {
   ModalHeader,
 } from "pentatrion-design/components/modal";
 import SpotCard from "~/components/SpotCard";
-import Image from "next/image";
 
 interface Props {
   event: AFHEvent;
@@ -64,8 +63,8 @@ export default function EventCard({ event }: Props) {
               e.preventDefault();
               setShowDetails(true);
             }}
-            className={clsx(
-              "cursor-pointer",
+            containerClassName={clsx(
+              "cursor-pointer shadow-lg transition-all duration-500",
               isIntersecting ? "opacity-100" : "scale-90 opacity-0",
             )}
           >
@@ -90,29 +89,36 @@ export default function EventCard({ event }: Props) {
             <ModalDescription height={500}>
               <div className="p-4">
                 <div>
-                  <span>{dayjs(event.date_start).format("H[h]mm")}</span>
+                  <span>Horaire : </span>
+                  <span className="font-bold">
+                    {dayjs(event.date_start).format("H[h]mm")}
+                  </span>
                   {event.date_end && (
-                    <span>
+                    <span className="font-bold">
                       {" "}
                       - <span>{dayjs(event.date_end).format("H[h]mm")}</span>
                     </span>
                   )}
                 </div>
+                <div>
+                  <span>Lieu : </span>
+                  {getLocationLabel(event.location)}
+                </div>
                 {event.image && (
-                  <img
-                    className="object-cover"
-                    src={`/thumbnail/large/${event.image}`}
-                    alt={event.title}
-                  />
+                  <div>
+                    <img
+                      className="object-cover"
+                      src={`/thumbnail/large/${event.image}`}
+                      alt={event.title}
+                    />
+                  </div>
                 )}
                 {event.description && (
                   <div
+                    className="mt-4 rounded-2xl border-2 border-drh-300 p-4 shadow-sm"
                     dangerouslySetInnerHTML={{ __html: event.description }}
                   ></div>
                 )}
-                <div className="text-right">
-                  {getLocationLabel(event.location)}
-                </div>
               </div>
             </ModalDescription>
           </ModalContent>

@@ -5,6 +5,7 @@ import { useEventListener } from "pentatrion-design/hooks";
 import { ComponentProps, CSSProperties, ReactNode, useRef } from "react";
 
 interface Props extends ComponentProps<"div"> {
+  containerClassName?: string;
   href?: string;
   spotStyle?: "dark" | "light";
 }
@@ -21,6 +22,7 @@ const styleLight: CSSProperties = {
 
 export default function SpotCard({
   children,
+  containerClassName,
   className,
   href,
   spotStyle = "dark",
@@ -42,7 +44,10 @@ export default function SpotCard({
   return (
     <div
       ref={ref}
-      className="group relative mx-auto w-full max-w-2xl transform-gpu overflow-hidden rounded-2xl bg-white/10 p-4 [--radius:theme(borderRadius.2xl)] before:absolute before:inset-0 before:bg-[radial-gradient(var(--spotlight-size)_circle_at_var(--x)_var(--y),var(--spotlight-color-stops))]"
+      className={clsx(
+        "group relative mx-auto w-full max-w-2xl transform-gpu overflow-hidden rounded-2xl bg-white/10 p-4 [--radius:theme(borderRadius.2xl)] before:absolute before:inset-0 before:bg-[radial-gradient(var(--spotlight-size)_circle_at_var(--x)_var(--y),var(--spotlight-color-stops))]",
+        containerClassName,
+      )}
       style={spotStyle === "dark" ? styleDark : styleLight}
       {...rest}
     >

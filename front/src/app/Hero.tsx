@@ -7,10 +7,11 @@ export default function Hero() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-r from-drh-500 to-drh-300 text-gray-0">
       <HeroParallax />
-      <div className="pointer-events-none relative grid min-h-screen grid-cols-1 md:grid-cols-2 md:grid-rows-2">
+      <div className="relative grid min-h-screen grid-cols-1 md:grid-cols-2 md:grid-rows-2">
         <div className="flex flex-col items-center justify-center">
           <h1 className="max-w-96">
             <Image
+              className="hover:animate-swing origin-top"
               src={logoImg}
               alt="Drôles de rencontres du Hautbois"
               width="800"
@@ -31,7 +32,10 @@ export default function Hero() {
           </div>
         </div>
         <div>
-          <div className="absolute bottom-32 left-32 flex h-52 w-52 items-center justify-center rounded-full bg-drh-600">
+          <a
+            href="#events"
+            className="hover:animate-short-pulse absolute bottom-32 left-32 flex h-52 w-52 items-center justify-center rounded-full bg-drh-600"
+          >
             <ul className="list-disc font-bold">
               <li>Concerts</li>
               <li>Ateliers</li>
@@ -39,7 +43,7 @@ export default function Hero() {
               <li>Conférences</li>
               <li>Expositions</li>
             </ul>
-          </div>
+          </a>
         </div>
         <div className="flex h-2/4 items-center justify-center"></div>
       </div>

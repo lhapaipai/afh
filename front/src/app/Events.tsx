@@ -102,7 +102,7 @@ function getGradientByIdx(idx: number) {
 export default async function Events() {
   const eventsByDay = await getEvents();
   return (
-    <div className="relative bg-[url(/hautbois-bg.svg)]">
+    <div className="relative" id="events">
       <div className="mx-auto max-w-5xl px-4 py-16">
         <header className="sticky top-0 z-20 w-full bg-gray-0 py-4">
           &nbsp;
@@ -161,6 +161,13 @@ export default async function Events() {
                   >
                     Palais Lumière
                   </h3>
+
+                  <div className="grid-cols-auto mx-auto grid max-w-5xl gap-x-8">
+                    {eventsByLocation["lumiere-exposition"]?.map((event) => {
+                      return <EventCard key={event.id} event={event} />;
+                    })}
+                  </div>
+
                   <div className="grid-cols-auto grid gap-8">
                     {lumiereLocations.map((location) => {
                       const events = eventsByLocation[location];
