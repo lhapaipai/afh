@@ -129,16 +129,21 @@ export default async function Infos() {
           ></RGradientMarker>
         </RMap>
 
-        <div className="mb-8 grid grid-cols-2 gap-8">
+        <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2">
           {locations.map((location) => {
             return (
-              <SpotCard key={location.id} href={location.website}>
-                <div className="text-center font-bold">{location.name}</div>
-                <div className="text-center">{location.address}</div>
-
-                <div
-                  dangerouslySetInnerHTML={{ __html: location.description }}
-                ></div>
+              <SpotCard
+                key={location.id}
+                href={location.website}
+                className="flex h-full items-center justify-center"
+              >
+                <div>
+                  <div className="text-center font-bold">{location.name}</div>
+                  <div className="text-center">{location.address}</div>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: location.description }}
+                  ></div>
+                </div>
               </SpotCard>
             );
           })}

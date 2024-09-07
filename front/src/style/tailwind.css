@@ -6,6 +6,7 @@
   @apply inline-block bg-gradient-to-r font-segoe-bl text-6xl;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }
 
 .grid-cols-auto {

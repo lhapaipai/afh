@@ -13,30 +13,40 @@ const sponsors: Sponsor[] = [
     logo: "ccpeva.svg",
     width: 270,
     height: 100,
+    website: "https://www.cc-peva.fr/",
   },
   {
     id: 2,
     logo: "evian.svg",
     width: 125,
     height: 100,
+    website: "https://ville-evian.fr/",
   },
   {
     id: 3,
     logo: "haute-savoie.svg",
     width: 150,
     height: 100,
+    website: "https://hautesavoie.fr/",
   },
   {
     id: 4,
     logo: "veran.svg",
     width: 294,
     height: 100,
+    website: "https://veran-vents.fr/",
   },
 ];
 
-function Sponsor({ sponsor }: { sponsor: Sponsor }) {
+function SponsorCard({ sponsor }: { sponsor: Sponsor }) {
+  const Element = sponsor.website ? "a" : "div";
+
   return (
-    <span className="inline-block whitespace-nowrap px-8 py-16 align-middle saturate-0 transition-all hover:saturate-100">
+    <Element
+      href={sponsor.website}
+      target="_blank"
+      className="inline-block whitespace-nowrap px-8 py-16 align-middle saturate-0 transition-all hover:saturate-100"
+    >
       <div className="inline-block text-center">
         <Image
           src={`/sponsors/${sponsor.logo}`}
@@ -46,7 +56,7 @@ function Sponsor({ sponsor }: { sponsor: Sponsor }) {
           className="inline h-24 w-auto max-w-none"
         />
       </div>
-    </span>
+    </Element>
   );
 }
 
@@ -60,17 +70,17 @@ export default function Sponsors() {
         <span className="inner block w-max animate-[slide-logos_100s_linear_infinite] overflow-hidden whitespace-nowrap will-change-transform">
           <span className="inline-block whitespace-nowrap">
             {sponsors.map((sponsor) => (
-              <Sponsor key={sponsor.id} sponsor={sponsor} />
+              <SponsorCard key={sponsor.id} sponsor={sponsor} />
             ))}
           </span>
           <span className="inline-block whitespace-nowrap">
             {sponsors.map((sponsor) => (
-              <Sponsor key={sponsor.id} sponsor={sponsor} />
+              <SponsorCard key={sponsor.id} sponsor={sponsor} />
             ))}
           </span>
           <span className="inline-block whitespace-nowrap">
             {sponsors.map((sponsor) => (
-              <Sponsor key={sponsor.id} sponsor={sponsor} />
+              <SponsorCard key={sponsor.id} sponsor={sponsor} />
             ))}
           </span>
         </span>

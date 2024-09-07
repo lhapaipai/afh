@@ -3,9 +3,12 @@ date					:= $(shell date +"%Y-%m-%d")
 
 local_path	:= $(PWD)
 
-front_host := rencontres-hautbois-evian.fr
 front_path := $(local_path)/front
+front_host := rencontres-hautbois-evian.fr
 front_remote_path := /srv/$(front_host)
+
+front_sandbox_host := sandbox.rencontres-hautbois-evian.fr
+front_sandbox_remote_path := /srv/$(front_sandbox_host)
 
 admin_host := admin.rencontres-hautbois-evian.fr
 admin_path := $(local_path)/admin
@@ -22,9 +25,26 @@ help:
 deploy-front:
 	cd $(front_path) && pnpm build
 	rsync -av --delete \
+		--exclude-from="$(front_path)/.rsyncignore" \
 		$(front_path)/out/ \
 		bernex-basic:$(front_remote_path)
+	scp "$(front_path)/ecosystem.config.cjs" bernex-basic:$(front_remote_path)/ecosystem.config.cjs
 	@echo "go : https://$(front_host)"
+
+.PHONY: deploy-front-sandbox
+deploy-front-sandbox:
+	cd $(front_path) && pnpm build
+	rsync -av --delete \
+		--exclude-from="$(front_path)/.rsyncignore" \
+		$(front_path)/ \
+		bernex-basic:$(front_sandbox_remote_path)
+	scp "$(front_path)/ecosystem.sandbox.config.cjs" bernex-basic:$(front_sandbox_remote_path)/ecosystem.config.cjs
+	ssh bernex-basic "\
+		cd $(front_sandbox_remote_path) &&\
+		pnpm install &&\
+		pnpm run build"
+
+	@echo "go : https://$(front_sandbox_host)"
 
 .PHONY: deploy-admin
 deploy-admin:

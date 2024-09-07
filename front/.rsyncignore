@@ -1,0 +1,6 @@
+ecosystem.config.js
+ecosystem.sandbox.config.js
+.local
+.next
+node_modules
+out

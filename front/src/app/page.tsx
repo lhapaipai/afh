@@ -1,5 +1,4 @@
 import Events from "./Events";
-import "./style.css";
 import WhiteWave from "~/components/WhiteWave";
 import Infos from "./Infos";
 import Support from "./Support";

@@ -1,6 +1,18 @@
-export default function Mountain() {
+import clsx from "clsx";
+import { ComponentPropsWithoutRef } from "react";
+
+export default function Mountain({
+  className,
+  ...rest
+}: ComponentPropsWithoutRef<"div">) {
   return (
-    <div className="w-screen overflow-hidden">
+    <div
+      className={clsx(
+        "w-[calc(100% + 2rem)] -mx-4 -my-4 overflow-hidden",
+        className,
+      )}
+      {...rest}
+    >
       <svg
         className="w-full min-w-[1024px]"
         width="100%"

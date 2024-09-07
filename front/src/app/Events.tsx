@@ -10,6 +10,7 @@ import Roseau2 from "~/components/Roseau2";
 import Bosquet from "~/components/Bosquet";
 import Roseau3 from "~/components/Roseau3";
 import { hexColors } from "~/style/colors";
+import markdown2html from "~/lib/markdown";
 
 type EventsByDay = {
   date: string;
@@ -24,7 +25,12 @@ async function getEvents() {
   );
 
   const eventsByDayObj: Record<string, EventsByDay> = {};
-  events.forEach((event) => {
+  for (const rawEvent of events) {
+    const event = {
+      ...rawEvent,
+      description:
+        rawEvent.description && (await markdown2html(rawEvent.description)),
+    };
     const dateStr = event.date_start?.substring(0, 10);
     if (!eventsByDayObj[dateStr]) {
       eventsByDayObj[dateStr] = {
@@ -38,7 +44,7 @@ async function getEvents() {
     } else {
       eventsByDayObj[dateStr].eventsByLocation[event.location].push(event);
     }
-  });
+  }
 
   return Object.keys(eventsByDayObj)
     .sort()
@@ -48,11 +54,11 @@ async function getEvents() {
 function tabOffsetByIdx(idx: number) {
   switch (idx) {
     case 0:
-      return "top-0";
+      return "";
     case 1:
-      return "ml-28 sm:ml-40 top-0";
+      return "ml-24 min-[400px]:ml-28 sm:ml-40";
     default:
-      return "ml-56 sm:ml-80 top-0";
+      return "ml-48 min-[400px]:ml-56 sm:ml-80";
   }
 }
 
@@ -82,18 +88,21 @@ function getTitleColorByIdx(idx: number) {
   }
 }
 
+function getGradientByIdx(idx: number) {
+  switch (idx) {
+    case 0:
+      return "from-drh-100 via-drh-100 via-30% to-transparent";
+    case 1:
+      return "from-drh-200 via-drh-200 via-30% to-transparent";
+    default:
+      return "from-drh-300 via-drh-300 via-30% to-transparent";
+  }
+}
+
 export default async function Events() {
   const eventsByDay = await getEvents();
-
   return (
     <div className="relative bg-[url(/hautbois-bg.svg)]">
-      {/* <div className="absolute inset-0 hidden overflow-hidden 2xl:block">
-        <Roseau2
-          className={clsx(
-            "absolute -bottom-8 right-0 mt-auto transition-all duration-500",
-          )}
-        />
-      </div>{" "} */}
       <div className="mx-auto max-w-5xl px-4 py-16">
         <header className="sticky top-0 z-20 w-full bg-gray-0 py-4">
           &nbsp;
@@ -105,16 +114,24 @@ export default async function Events() {
           );
           return (
             <Fragment key={date}>
-              <a
-                className={clsx(
-                  "sticky z-30 inline-block w-32 rounded-t-2xl py-4 text-center font-bold sm:w-48",
-                  getBgByIdx(idx),
-                  tabOffsetByIdx(idx),
-                )}
-                href={`#${date}`}
-              >
-                {capitalize(dayjs(date).format("dddd D"))}
-              </a>{" "}
+              <div className={clsx("pointer-events-none sticky top-0 z-30")}>
+                <a
+                  className={clsx(
+                    "pointer-events-auto inline-block w-32 rounded-t-2xl py-4 text-center font-bold sm:w-48",
+                    getBgByIdx(idx),
+                    tabOffsetByIdx(idx),
+                  )}
+                  href={`#${date}`}
+                >
+                  {capitalize(dayjs(date).format("dddd D"))}
+                </a>
+                <div
+                  className={clsx(
+                    "absolute left-0 top-full h-8 w-full bg-gradient-to-b",
+                    getGradientByIdx(idx),
+                  )}
+                ></div>
+              </div>
               <div
                 id={`${date}`}
                 className={clsx(

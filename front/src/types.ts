@@ -8,6 +8,7 @@ export type Event = {
   description: string | null;
   date_start: string;
   date_end: string | null;
+  image: string | null;
 };
 
 export type Page = {
@@ -36,4 +37,13 @@ export type Sponsor = {
   logo: string;
   width: number;
   height: number;
+  website?: string;
+};
+
+export type FormSponsor = {
+  id: number;
+  state: "unread" | "read" | "answered";
+  name: string;
+  email: string;
+  message: string;
 };
